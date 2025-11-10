@@ -2,7 +2,7 @@ name: Teni Saluton Viva
 
 on:
   schedule:
-    - cron: "0 0 1,31 * *"  # 每月 1 号和 31 号凌晨0点
+    - cron: "32 10 11,27 * *"  # 每个月的 11 号和 27 号的 18 点 32 分执行
   workflow_dispatch:       # 支持手动触发
 
 jobs:
