@@ -18,7 +18,7 @@ mesaĝaj_partoj = []
 mesaĝaj_partoj.append("🌐 netlib.re 域名保活报告")
 
 def ensaluta_konto(playwright, UZANTONOMO, PWD):
-    mesaĝaj_partoj.append(f"🧑‍💻 开始登录账号: {UZANTONOMO}")
+    mesaĝaj_partoj.append(f"🧑‍💻 开始登录账号")
     try:
         browser = playwright.chromium.launch(headless=True)
         context = browser.new_context()
@@ -42,7 +42,7 @@ def ensaluta_konto(playwright, UZANTONOMO, PWD):
 
         success_text = "You are the exclusive owner of the following domains."
         if page.query_selector(f"text={success_text}"):
-            mesaĝaj_partoj.append(f"☑️ 账号 {UZANTONOMO} 登录成功")
+            mesaĝaj_partoj.append(f"☑️ 账号登录成功")
             mesaĝaj_partoj.append("🎉 账号已保活！")
             time.sleep(5)
         else:
@@ -52,15 +52,15 @@ def ensaluta_konto(playwright, UZANTONOMO, PWD):
                     failed_msg = msg
                     break
             if failed_msg:
-                mesaĝaj_partoj.append(f"⛔ 账号 {UZANTONOMO} 登录失败: {failed_msg}")
+                mesaĝaj_partoj.append(f"⛔ 账号登录失败: {failed_msg}")
             else:
-                mesaĝaj_partoj.append(f"💥 账号 {UZANTONOMO} 登录失败: 未知错误")
+                mesaĝaj_partoj.append(f"💥 账号登录失败: 未知错误")
 
         context.close()
         browser.close()
 
     except Exception as e:
-        mesaĝaj_partoj.append(f"⚠️ 账号 {UZANTONOMO} 登录异常: {e}")
+        mesaĝaj_partoj.append(f"⚠️ 账号登录异常: {e}")
 
 def sendi_telegraman_mesaĝon(teksto):
     url = f"https://api.telegram.org/bot{TELEGRAM_SIGNALO}/sendMessage"
